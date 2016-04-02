@@ -18,12 +18,52 @@ connection.connect();
 var report = function(action, building, room) {
 	switch (action){
 		case "needBlack":
+			connection.query("SELECT * FROM `demands` WHERE (`building`='" + building + "' & `room`='" + room + "' & 'demand' ='black');", function(err, rows){
+				if (err) {
+					console.dir(err);
+					return;
+				}
+				if (rows.length == 0) {
+					connection.query("INSERT INTO `demands` VALUES (0, '" + building + "', " + room + ", 'black');");
+					return;
+				}
+			});
 			break;
 		case "needBlue":
+			connection.query("SELECT * FROM `demands` WHERE (`building`='" + building + "' & `room`='" + room + "' & 'demand' ='blue');", function(err, rows){
+				if (err) {
+					console.dir(err);
+					return;
+				}
+				if (rows.length == 0) {
+					connection.query("INSERT INTO `demands` VALUES (0, '" + building + "', " + room + ", 'blue');");
+					return;
+				}
+			});
 			break;
 		case "needRed":
+			connection.query("SELECT * FROM `demands` WHERE (`building`='" + building + "' & `room`='" + room + "' & 'demand' ='red');", function(err, rows){
+				if (err) {
+					console.dir(err);
+					return;
+				}
+				if (rows.length == 0) {
+					connection.query("INSERT INTO `demands` VALUES (0, '" + building + "', " + room + ", 'red');");
+					return;
+				}
+			});
 			break;
 		case "needGreen":
+			connection.query("SELECT * FROM `demands` WHERE (`building`='" + building + "' & `room`='" + room + "' & 'demand' ='green');", function(err, rows){
+				if (err) {
+					console.dir(err);
+					return;
+				}
+				if (rows.length == 0) {
+					connection.query("INSERT INTO `demands` VALUES (0, '" + building + "', " + room + ", 'green');");
+					return;
+				}
+			});
 			break;
 		case "needEraser":
 			connection.query("SELECT * FROM `demands` WHERE (`building`='" + building + "' & `room`='" + room + "' & 'demand' ='eraser');", function(err, rows){
